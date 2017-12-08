@@ -48,7 +48,7 @@ public  class AddTwoNumbers {
     }
           public  static  ListNode  geti(ListNode s,ListNode newhead){
               while (s!=null){
-                  newhead.next=new ListNode(s.next.val);
+                  newhead.next=new ListNode(s.val);
                   newhead=newhead.next;
                   s=s.next;
               }
