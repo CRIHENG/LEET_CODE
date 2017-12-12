@@ -23,6 +23,9 @@ public  class AddTwoNumbers {
                 tensDigits=1;
             }else {
                 singleDigits=l1.val + l2.val+tensDigits;
+                if(tensDigits>0){
+                    tensDigits=0;
+                }
             }
             if(newHead==null){
                 newHead=new ListNode(singleDigits);
@@ -31,30 +34,45 @@ public  class AddTwoNumbers {
                 newHead.next=new ListNode(singleDigits);
                 newHead=newHead.next;
             }
-            if(tensDigits>0){
-                tensDigits=0;
-            }
             l1=l1.next;
             l2=l2.next;
             current01=l1;
             current02=l2;
         }
         if(current01!=null){
-            geti(current01,newHead);
+           tensDigits=  geti(current01,newHead,tensDigits);
         }
         if(current02!=null){
-            geti(current02,newHead);
+            tensDigits= geti(current02,newHead,tensDigits);
         }
-        
+        if(tensDigits>0){
+            while (newHead.next!=null){
+                newHead=newHead.next;
+            }
+             newHead.next=new ListNode(tensDigits);
+        }
         return current;
     }
-          public  static  ListNode  geti(ListNode s,ListNode newhead){
+          public  static  int  geti(ListNode s,ListNode newhead,int tensDigits){
+              int val;
               while (s!=null){
-                  newhead.next=new ListNode(s.val);
+                  
+                  if(tensDigits>0){
+                     val=s.val+tensDigits;
+                      tensDigits=0;
+                  }else {
+                      val=s.val;
+                  }
+                  if(val>=10){
+                      val=0;
+                      tensDigits=1;
+                  }
+                  newhead.next=new ListNode(val);
                   newhead=newhead.next;
                   s=s.next;
               }
-              return newhead;
+              
+              return tensDigits;
           }
 
 }
