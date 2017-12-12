@@ -14,6 +14,7 @@ public  class AddTwoNumbers {
         ListNode current01=null;
         ListNode current02=null;
         ListNode newHead=null;
+        ListNode current=null;
         int tensDigits =0;
         while (l1 != null && l2 != null) {
             int singleDigits;
@@ -25,6 +26,7 @@ public  class AddTwoNumbers {
             }
             if(newHead==null){
                 newHead=new ListNode(singleDigits);
+                current=newHead;
             }else {
                 newHead.next=new ListNode(singleDigits);
                 newHead=newHead.next;
@@ -44,7 +46,7 @@ public  class AddTwoNumbers {
             geti(current02,newHead);
         }
         
-        return newHead;
+        return current;
     }
           public  static  ListNode  geti(ListNode s,ListNode newhead){
               while (s!=null){
