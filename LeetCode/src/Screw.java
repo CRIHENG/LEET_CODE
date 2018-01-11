@@ -56,14 +56,23 @@ public class Screw {
       int[][] result= screwPNG(5);
         for(int i=0;i<result.length;i++){
             for(int j=0;j<result[i].length;j++){
-                System.out.printf("  2d%",result[i][j]);
+                System.out.println(result[i][j]);
+              
+                }
+                
             }
             
         }
         
         
+    @Test
+    public  void test02(){
+        
+        
+        
         
     }
+    
 
 
 }
